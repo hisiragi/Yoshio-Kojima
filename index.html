@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>でもそんなの関係ねぇジェネレーター</title>
+
+<style>
+body{
+    margin:0;
+    background:#f5f7fb;
+    font-family:sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.card{
+    background:white;
+    width:700px;
+    max-width:95%;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+h1{
+    text-align:center;
+}
+
+button{
+    cursor:pointer;
+    border:none;
+    border-radius:10px;
+    padding:14px 22px;
+    font-size:18px;
+    margin:6px;
+}
+
+#start{
+    background:#1e88e5;
+    color:white;
+}
+
+#share{
+    background:#000;
+    color:white;
+}
+
+#result{
+    margin-top:20px;
+    background:#fafafa;
+    border-radius:10px;
+    padding:15px;
+    white-space:pre-wrap;
+    line-height:1.7;
+    max-height:420px;
+    overflow:auto;
+}
+
+#count{
+    margin-top:20px;
+    font-size:22px;
+    font-weight:bold;
+    text-align:center;
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+
+<h1>でもそんなの関係ねぇジェネレーター</h1>
+
+<div style="text-align:center">
+<button id="start">スタート</button>
+<button id="share">Xでシェア</button>
+</div>
+
+<div id="count"></div>
+
+<div id="result"></div>
+
+</div>
+
+<script>
+
+let lastCount = 0;
+
+function run(){
+
+    let lines=[];
+
+    let count=2;
+
+    lines.push("でもそんなの関係ねぇ");
+    lines.push("でもそんなの関係ねぇ");
+
+    while(Math.random()<0.8){
+        lines.push("でもそんなの関係ねぇ");
+        count++;
+    }
+
+    lines.push("はいオッパッピー");
+
+    lastCount=count;
+
+    document.getElementById("result").textContent=lines.join("\n");
+
+    document.getElementById("count").textContent=
+    "「でもそんなの関係ねぇ」は "+count+" 回でした！";
+}
+
+   document.getElementById("start").onclick=run;
+
+   document.getElementById("share").onclick=function(){
+
+   const text = `「でもそんなの関係ねぇ」は ${lastCount} 回でした！`;
+
+   const shareUrl = "https://xn--t8jzazlv69o96a.pages.dev";
+
+   const url =
+   `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(shareUrl)}&hashtags=でもそんなの関係ねぇチャレンジ`;
+
+window.open(url, "_blank");
+};
+
+run();
+
+</script>
+
+</body>
+</html>
